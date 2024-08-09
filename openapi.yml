@@ -1,0 +1,86 @@
+openapi: 3.0.3
+info:
+  title: This repository is a technical survey of the GitHub Models API Specification
+  version: 0.0.0
+  license:
+    name: MIT
+    url: https://opensource.org/license/mit/
+servers:
+  - url: http://localhost:5000
+    description: Development Server
+tags:
+  - name: item
+components:
+  schemas:
+    ChatCreateRequest:
+      type: object
+      properties:
+        message:
+          type: string
+    ChatCreateResponse:
+      type: object
+      properties:
+        id:
+          type: string
+    ChatGetResponse:
+      type: object
+      properties:
+        id:
+          type: string
+paths:
+  /chats:
+    post:
+      tags:
+        - item
+      summary: summary of post
+      description: description
+      operationId: postData
+      parameters:
+        - name: query
+          in: query
+          description: description
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: description
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatCreateRequest'
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatCreateResponse'
+  /chats/{id}:
+    parameters:
+      - in: path
+        required: true
+        name: id
+        description: Chat ID
+        schema:
+          type: string
+    get:
+      tags:
+        - item
+      summary: summary of get
+      description: description
+      operationId: getData
+      parameters:
+        - name: query
+          in: query
+          description: description
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatGetResponse'

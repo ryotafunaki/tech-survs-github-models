@@ -6,32 +6,32 @@ This repository is a Python Project.
 
 ## Requirements
 
+- Python 3.12 and above
+
 ## Container image info
 
 ## How to use
 
 ### Execution on local machine
 
+1.  Set the environment variables
+    | Name       | Description                             | Value |
+    | ---------- | --------------------------------------- | ----- |
+    | AZURE_AI_ENDPOINT |   | https://models.inference.ai.azure.com |
+    | GITHUB_TOKEN | The port number of the cache server     | *Your GitHub Token*  |
+    e.g.
+    ```bash
+    export AZURE_AI_ENDPOINT=https://models.inference.ai.azure.com
+    export GITHUB_TOKEN=<Your GitHub Token>
+    ``` 
+
 1.  Start the application
     ```bash
-    python main.py
+    poetry run python main.py
     ```
 
-### Execution on Docker
-
-1.  Start the application
+1. Request the application
     ```bash
-    docker compose up -d
-    ```
-
-### Execution on Kubernetes
-
-1. Register the Helm repository
-    ```bash
-    helm repo add rfull-development http://charts.ngv.jp
-    helm repo update
-    ```
-1. Deploy the application
-    ```bash
-    helm install rfull-development/<release-name> --namespace <namespace> --create-namespace
+    curl -X POST http://localhost:5000/chats -d '{"message": "Hello, World!"}'
+    curl http://localhost:5000/chats/1
     ```
