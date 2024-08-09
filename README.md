@@ -17,8 +17,8 @@ This repository is a Python Project.
 1.  Set the environment variables
     | Name       | Description                             | Value |
     | ---------- | --------------------------------------- | ----- |
-    | AZURE_AI_ENDPOINT |   | https://models.inference.ai.azure.com |
-    | GITHUB_TOKEN | The port number of the cache server     | *Your GitHub Token*  |
+    | AZURE_AI_ENDPOINT | Azure AI endpoint | https://models.inference.ai.azure.com |
+    | GITHUB_TOKEN | GitHub Token | *Your GitHub Token*  |
     e.g.
     ```bash
     export AZURE_AI_ENDPOINT=https://models.inference.ai.azure.com
