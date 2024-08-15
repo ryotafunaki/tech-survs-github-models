@@ -1,6 +1,6 @@
-# Python Project Repository
+# GitHub Models Technical Survey Project Repository
 
-This repository is a Python Project.
+This repository is a technical survey of the GitHub Models.
 
 ## Overview
 
@@ -8,23 +8,19 @@ This repository is a Python Project.
 
 - Python 3.12 and above
 
-## Container image info
-
-## How to use
-
 ### Execution on local machine
 
 1.  Set the environment variables
     | Name       | Description                             | Value |
     | ---------- | --------------------------------------- | ----- |
+    | CHAT_DB_FILE | Chat database file path | *File path* |
     | AZURE_AI_ENDPOINT | Azure AI endpoint | https://models.inference.ai.azure.com |
     | GITHUB_TOKEN | GitHub token | *Your GitHub token* |
-    | CHAT_DB_FILE | Chat database file path | *File path* |
     e.g.
     ```bash
+    export CHAT_DB_FILE=./chat.db
     export AZURE_AI_ENDPOINT=https://models.inference.ai.azure.com
     export GITHUB_TOKEN=<Your GitHub token>
-    export CHAT_DB_FILE=./chat.db
     ``` 
 
 1.  Start the application
@@ -32,9 +28,19 @@ This repository is a Python Project.
     poetry run python main.py
     ```
 
-1. Request the application
+1.  Request the application
     ```bash
-    curl -X POST http://localhost:5000/chats -d '{"message": "Hello, World!"}'
+    curl -X 'POST' \
+    'http://localhost:5000/chats' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "message": "Hello, World!"
+    }'
+    ```
+
+1.  Get a response from your application
+    ```bash
     curl http://localhost:5000/chats/1
     ```
 

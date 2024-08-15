@@ -7,7 +7,7 @@ from flask import Flask
 from flask_restful import Api
 
 import handlers
-from processors.message import MessageProcessor
+from processors import MessageProcessor
 
 
 def get_args():
