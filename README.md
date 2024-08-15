@@ -1,37 +1,48 @@
-# Python Project Repository
+# GitHub Models Technical Survey Project Repository
 
-This repository is a Python Project.
+This repository is a technical survey of the GitHub Models.
 
 ## Overview
 
 ## Requirements
 
-## Container image info
-
-## How to use
+- Python 3.12 and above
 
 ### Execution on local machine
 
+1.  Set the environment variables
+    | Name       | Description                             | Value |
+    | ---------- | --------------------------------------- | ----- |
+    | CHAT_DB_FILE | Chat database file path | *File path* |
+    | AZURE_AI_ENDPOINT | Azure AI endpoint | https://models.inference.ai.azure.com |
+    | GITHUB_TOKEN | GitHub token | *Your GitHub token* |
+    e.g.
+    ```bash
+    export CHAT_DB_FILE=./chat.db
+    export AZURE_AI_ENDPOINT=https://models.inference.ai.azure.com
+    export GITHUB_TOKEN=<Your GitHub token>
+    ``` 
+
 1.  Start the application
     ```bash
-    python main.py
+    poetry run python main.py
     ```
 
-### Execution on Docker
-
-1.  Start the application
+1.  Request the application
     ```bash
-    docker compose up -d
+    curl -X 'POST' \
+    'http://localhost:5000/chats' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "message": "Hello, World!"
+    }'
     ```
 
-### Execution on Kubernetes
+1.  Get a response from your application
+    ```bash
+    curl http://localhost:5000/chats/1
+    ```
 
-1. Register the Helm repository
-    ```bash
-    helm repo add rfull-development http://charts.ngv.jp
-    helm repo update
-    ```
-1. Deploy the application
-    ```bash
-    helm install rfull-development/<release-name> --namespace <namespace> --create-namespace
-    ```
+> [!NOTE]  
+> Check chat requests at 5-second intervals.

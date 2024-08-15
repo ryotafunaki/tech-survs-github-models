@@ -1,4 +1,8 @@
-#!/bin/bash
 # Copyright (c) 2024 RFull Development
 # This source code is managed under the MIT license. See LICENSE in the project root.
-docker buildx rm -f builder
+from dataclasses import dataclass
+
+
+@dataclass
+class ChatCreateRequest:
+    message: str
