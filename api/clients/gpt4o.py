@@ -11,13 +11,10 @@ from azure.core.credentials import AzureKeyCredential
 
 @dataclass
 class Gpt4oConfig:
+    system_messages: list[str]
     temperature: float
     max_tokens: int
     top_p: float
-
-    def __init__(self, **entries):
-        self.__dict__.update(entries)
-        return
 
 
 @dataclass
@@ -38,7 +35,13 @@ def get_credential():
 def load_gpu4o_config():
     with open("gpt4o.config.json") as f:
         json_data = json.load(f)
-        config = Gpt4oConfig(**json_data)
+        config = Gpt4oConfig(
+            system_messages=" ".join(
+                json_data["systemMessages"]) if "systemMessages" in json_data else "",
+            temperature=json_data["temperature"],
+            max_tokens=json_data["maxTokens"],
+            top_p=json_data["topP"]
+        )
     return config
 
 
@@ -53,12 +56,12 @@ class Gpt4oClient:
     def __init__(self):
         pass
 
-    def setup(self, system_message: str) -> None:
+    def setup(self) -> None:
         self.__client = ChatCompletionsClient(
             endpoint=config.endpoint,
             credential=config.credential
         )
-        self.__system_message = system_message
+        self.__system_message = config.gpt4o_config.system_messages
         return
 
     def complete(self, messages: str) -> str:

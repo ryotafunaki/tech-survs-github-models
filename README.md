@@ -18,11 +18,13 @@ This repository is a Python Project.
     | Name       | Description                             | Value |
     | ---------- | --------------------------------------- | ----- |
     | AZURE_AI_ENDPOINT | Azure AI endpoint | https://models.inference.ai.azure.com |
-    | GITHUB_TOKEN | GitHub Token | *Your GitHub Token*  |
+    | GITHUB_TOKEN | GitHub token | *Your GitHub token* |
+    | CHAT_DB_FILE | Chat database file path | *File path* |
     e.g.
     ```bash
     export AZURE_AI_ENDPOINT=https://models.inference.ai.azure.com
-    export GITHUB_TOKEN=<Your GitHub Token>
+    export GITHUB_TOKEN=<Your GitHub token>
+    export CHAT_DB_FILE=./chat.db
     ``` 
 
 1.  Start the application
@@ -35,3 +37,6 @@ This repository is a Python Project.
     curl -X POST http://localhost:5000/chats -d '{"message": "Hello, World!"}'
     curl http://localhost:5000/chats/1
     ```
+
+> [!NOTE]  
+> Check chat requests at 5-second intervals.
