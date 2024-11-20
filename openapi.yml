@@ -1,0 +1,79 @@
+openapi: 3.0.3
+info:
+  title: Technical survey of the GitHub Models API Specification
+  version: 1.0.0
+  license:
+    name: MIT
+    url: https://opensource.org/license/mit/
+servers:
+  - url: http://localhost:5000
+    description: Development Server
+tags:
+  - name: item
+components:
+  schemas:
+    ChatCreateRequest:
+      type: object
+      properties:
+        message:
+          type: string
+    ChatCreateResponse:
+      type: object
+      properties:
+        id:
+          type: string
+    ChatGetResponse:
+      type: object
+      properties:
+        id:
+          type: string
+paths:
+  /chats:
+    post:
+      tags:
+        - Chat
+      summary: Chat Requests
+      description: Request a new chat.
+      operationId: ChatListHandler_post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatCreateRequest'
+      responses:
+        '201':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatCreateResponse'
+        '400':
+          description: bad request
+        '503':
+          description: service unavailable
+  /chats/{id}:
+    parameters:
+      - in: path
+        required: true
+        name: id
+        description: Chat ID
+        schema:
+          type: string
+    get:
+      tags:
+        - Chat
+      summary: Get Chat Response
+      description: Returns the response of the requested chat.
+      operationId: ChatHandler_get
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatGetResponse'
+        '400':
+          description: bad request
+        '503':
+          description: service unavailable

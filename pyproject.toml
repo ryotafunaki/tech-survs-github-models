@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "tech-survs-github-models"
+version = "1.0.0"
+description = ""
+authors = ["RFull Development"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+azure-ai-inference = "^1.0.0b6"
+flask-restful = "^0.3.10"
+urllib3 = "^2.2.3"
+
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "^2.3.1"
+flake8 = "^7.1.1"
+pytest = "^8.3.3"
+isort = "^5.13.2"
+autoflake = "^2.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
