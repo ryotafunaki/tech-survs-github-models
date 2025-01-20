@@ -44,13 +44,13 @@ pycodestyle = ">=2.12.0"
 
 [[package]]
 name = "azure-ai-inference"
-version = "1.0.0b6"
+version = "1.0.0b7"
 description = "Microsoft Azure AI Inference Client Library for Python"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "azure_ai_inference-1.0.0b6-py3-none-any.whl", hash = "sha256:5699ad78d70ec2d227a5eff2c1bafc845018f6624edc5b03589dfff861c54958"},
-    {file = "azure_ai_inference-1.0.0b6.tar.gz", hash = "sha256:b8ac941de1e69151bad464191e18856d4e74f962ae03235da137a9a326143676"},
+    {file = "azure_ai_inference-1.0.0b7-py3-none-any.whl", hash = "sha256:59bb6a9ee62bd7654a69ca2bf12fe9335d7045df95b491cb8b5f9e3791c86175"},
+    {file = "azure_ai_inference-1.0.0b7.tar.gz", hash = "sha256:bd912f71f7f855036ca46c9a21439f290eed5e61da418fd26bbb32e3c68bcce3"},
 ]
 
 [package.dependencies]
@@ -618,4 +618,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "d97e9a366ae9eb0dac99034f8c40a4f7d881395f317501d4d0d6f8b89e2c0efc"
+content-hash = "b53995bc35ee032a994125bf8cc9980ba66e5b5eb2474be602281b5e034a7ef1"
